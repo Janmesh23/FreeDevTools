@@ -191,9 +191,9 @@ const SearchBar: React.FC = () => {
               "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
               isFocused
                 ? "border-blue-500 dark:border-blue-500 bg-background/50 backdrop-blur-sm"
-                : "border-gray-300 dark:border-gray-600 hover:bg-white/70 dark:hover:bg-gray-800/70"
+                : "border-gray-300 dark:border-gray-600 hover:bg-white/70 dark:hover:bg-gray-800/70 shadow-sm"
             )}
-            placeholder="Search Dev Resources..."
+            placeholder="Search 125,000+ free dev resources..."
             value={searchValue}
             onChange={handleSearchChange}
             onFocus={handleSearchFocus}

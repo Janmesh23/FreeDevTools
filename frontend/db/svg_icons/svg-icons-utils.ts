@@ -1,4 +1,4 @@
-import Database from 'better-sqlite3';
+import { createRequire } from 'node:module';
 import path from 'path';
 import type {
   Cluster,
@@ -8,16 +8,20 @@ import type {
   RawIconRow,
 } from './svg-icons-schema';
 
-let dbInstance: Database.Database | null = null;
+const require = createRequire(import.meta.url);
+
+const BetterSqlite3 = require('better-sqlite3');
+
+let dbInstance: any | null = null;
 
 function getDbPath(): string {
   return path.resolve(process.cwd(), 'db/svg_icons/svg-icons-db.db');
 }
 
-export function getDb(): Database.Database {
+export function getDb(): any {
   if (dbInstance) return dbInstance;
   const dbPath = getDbPath();
-  dbInstance = new Database(dbPath, { readonly: true });
+  dbInstance = new BetterSqlite3(dbPath, { readonly: true });
   // Improve read performance for build-time queries
   dbInstance.pragma('journal_mode = OFF');
   dbInstance.pragma('synchronous = OFF');

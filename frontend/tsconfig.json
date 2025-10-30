@@ -12,6 +12,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "noImplicitAny": false,
     "paths": {
       "@/*": ["./src/*"],
       "db/*": ["./db/*"]

@@ -44,5 +44,24 @@ export default defineConfig({
         compress: true,
       }
     },
+    // Ensure native/node-only deps are not bundled for static build
+    ssr: {
+      external: [
+        'better-sqlite3'
+      ],
+      noExternal: []
+    },
+    optimizeDeps: {
+      exclude: [
+        'better-sqlite3'
+      ]
+    },
+    build: {
+      rollupOptions: {
+        external: [
+          'better-sqlite3'
+        ]
+      }
+    }
   },
 });
